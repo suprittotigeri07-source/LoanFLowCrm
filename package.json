@@ -1,0 +1,15 @@
+{
+  "name": "business-loan-telecalling-crm",
+  "version": "1.0.0",
+  "description": "Business Loan Telecalling CRM System with Role-Based Access, Calling Queue & Admin Dashboard",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "backend": "python backend/manage.py runserver 127.0.0.1:8000",
+    "seed": "python backend/seed_data.py",
+    "test": "pytest backend/tests -v"
+  },
+  "keywords": ["crm", "telecalling", "business-loan", "django", "react", "vite"],
+  "author": "",
+  "license": "ISC"
+}
