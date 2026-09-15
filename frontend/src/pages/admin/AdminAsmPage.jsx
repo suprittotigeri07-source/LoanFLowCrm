@@ -339,20 +339,18 @@ export default function AdminAsmPage() {
                     <td className="p-4 text-gray-600">{a.mobile || '—'}</td>
                     <td className="p-4 text-gray-600">{a.branch || '—'}</td>
                     <td className="p-4">
-                      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${
-                        a.credentials_email_status === 'Credentials Sent'
-                          ? 'bg-emerald-100 text-emerald-800'
-                          : a.credentials_email_status === 'Email Failed'
+                      <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${a.credentials_email_status === 'Credentials Sent'
+                        ? 'bg-emerald-100 text-emerald-800'
+                        : a.credentials_email_status === 'Email Failed'
                           ? 'bg-red-100 text-red-800'
                           : 'bg-gray-100 text-gray-700'
-                      }`}>
+                        }`}>
                         {a.credentials_email_status || 'Not Sent'}
                       </span>
                     </td>
                     <td className="p-4">
-                      <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${
-                        a.is_active ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'
-                      }`}>
+                      <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${a.is_active ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'
+                        }`}>
                         {a.is_active ? 'Active' : 'Inactive'}
                       </span>
                     </td>
@@ -632,13 +630,12 @@ export default function AdminAsmPage() {
                             <td className="p-2.5">{r.email || '—'}</td>
                             <td className="p-2.5">{r.mobile || '—'}</td>
                             <td className="p-2.5">
-                              <span className={`px-2 py-0.5 rounded-full font-bold text-[10px] ${
-                                r.validation_status === 'VALID'
-                                  ? 'bg-emerald-100 text-emerald-800'
-                                  : r.validation_status === 'DUPLICATE'
+                              <span className={`px-2 py-0.5 rounded-full font-bold text-[10px] ${r.validation_status === 'VALID'
+                                ? 'bg-emerald-100 text-emerald-800'
+                                : r.validation_status === 'DUPLICATE'
                                   ? 'bg-amber-100 text-amber-800'
                                   : 'bg-red-100 text-red-800'
-                              }`}>
+                                }`}>
                                 {r.validation_status}
                               </span>
                             </td>
