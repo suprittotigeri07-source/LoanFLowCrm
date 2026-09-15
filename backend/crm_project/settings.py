@@ -14,7 +14,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-telecalling-crm-produ
 
 DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+raw_allowed = os.environ.get('ALLOWED_HOSTS', '*')
+ALLOWED_HOSTS = [h.strip() for h in raw_allowed.split(',') if h.strip()]
+if '*' not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.extend(['.onrender.com', 'loanflowcrm.onrender.com', 'localhost', '127.0.0.1'])
 
 # Application definition
 INSTALLED_APPS = [
