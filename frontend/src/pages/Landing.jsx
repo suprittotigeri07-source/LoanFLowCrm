@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import {
   TrendingUp, Phone, Users, FileText, BarChart2, Clock, Shield, CheckCircle,
   ArrowRight, ChevronRight, Star, Upload, UserCheck, PhoneCall, Target,
-  AlertCircle, Bell, Layers, Database, Lock, Activity, Zap
+  AlertCircle, Bell, Layers, Database, Lock, Activity, Zap, MessageSquare,
+  Mic, Landmark, PieChart, Sparkles, Building2, CheckSquare, Award, Smartphone
 } from 'lucide-react'
 
 // ─── Mock Dashboard Preview Card ─────────────────────────────────────────────
@@ -11,201 +12,138 @@ function DashboardPreview() {
   return (
     <div className="relative bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden w-full max-w-lg mx-auto">
       {/* Title bar */}
-      <div className="bg-gray-50 border-b border-gray-100 px-4 py-3 flex items-center gap-2">
-        <div className="flex gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-red-400" /><span className="w-2.5 h-2.5 rounded-full bg-amber-400" /><span className="w-2.5 h-2.5 rounded-full bg-green-400" /></div>
-        <span className="text-xs text-gray-500 ml-2 font-medium">LoanFlow CRM — Admin Dashboard</span>
+      <div className="bg-slate-900 border-b border-slate-800 px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="flex gap-1.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+          </div>
+          <span className="text-xs text-slate-300 ml-2 font-medium tracking-wide">
+            Siddharoodha LoanConnect — Admin MIS
+          </span>
+        </div>
+        <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-800/50">
+          Live Sync
+        </span>
       </div>
 
       <div className="p-5 space-y-4">
-        {/* Stats row */}
-        <div className="grid grid-cols-4 gap-2.5">
+        {/* Today MIS stats row */}
+        <div className="grid grid-cols-4 gap-2">
           {[
-            { label: 'Total Leads', value: '12,540', color: 'bg-indigo-50 text-indigo-600' },
-            { label: 'Calls Today', value: '426', color: 'bg-blue-50 text-blue-600' },
-            { label: 'Interested', value: '64', color: 'bg-emerald-50 text-emerald-600' },
-            { label: 'Disbursed', value: '₹4.2Cr', color: 'bg-amber-50 text-amber-600' },
+            { label: 'Total Leads', value: '250', color: 'bg-indigo-50 text-indigo-700 border-indigo-100' },
+            { label: 'Calls Today', value: '218', color: 'bg-blue-50 text-blue-700 border-blue-100' },
+            { label: 'Connected', value: '146', color: 'bg-emerald-50 text-emerald-700 border-emerald-100' },
+            { label: 'Interested', value: '42', color: 'bg-amber-50 text-amber-700 border-amber-100' },
           ].map(s => (
-            <div key={s.label} className={`rounded-xl p-2.5 ${s.color}`}>
-              <div className="text-base font-bold">{s.value}</div>
-              <div className="text-[10px] opacity-80 mt-0.5 leading-tight">{s.label}</div>
+            <div key={s.label} className={`rounded-xl p-2.5 border ${s.color}`}>
+              <div className="text-base font-extrabold">{s.value}</div>
+              <div className="text-[10px] opacity-80 mt-0.5 font-medium leading-tight">{s.label}</div>
             </div>
           ))}
         </div>
 
-        {/* Chart mock */}
-        <div className="bg-gray-50 rounded-xl p-3">
-          <div className="text-xs font-semibold text-gray-600 mb-2">Calls This Week</div>
-          <div className="flex items-end gap-1.5 h-20">
-            {[55, 72, 48, 80, 65, 90, 76].map((h, i) => (
-              <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                <div className="w-full rounded-sm bg-indigo-500 opacity-80" style={{ height: `${h}%` }} />
-              </div>
-            ))}
-          </div>
-          <div className="flex justify-between mt-1">
-            {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, i) => (
-              <span key={i} className="text-[10px] text-gray-400 flex-1 text-center">{d}</span>
-            ))}
-          </div>
-        </div>
-
-        {/* Lead table */}
-        <div>
-          <div className="text-xs font-semibold text-gray-600 mb-2">Recent Leads</div>
-          <div className="space-y-2">
-            {[
-              { name: 'Rajesh Kumar', biz: 'Sharma Traders', amt: '₹15L', status: 'Interested', color: 'text-emerald-600 bg-emerald-50' },
-              { name: 'Sunita Agarwal', biz: 'Agarwal Textiles', amt: '₹25L', status: 'Docs Pending', color: 'text-amber-600 bg-amber-50' },
-              { name: 'Kavitha Reddy', biz: 'Reddy Pharma', amt: '₹35L', status: 'Login', color: 'text-violet-600 bg-violet-50' },
-            ].map(l => (
-              <div key={l.name} className="flex items-center justify-between py-1.5 px-2 rounded-lg hover:bg-gray-50 transition-colors">
-                <div className="flex-1 min-w-0">
-                  <div className="text-xs font-semibold text-gray-800 truncate">{l.name}</div>
-                  <div className="text-[10px] text-gray-400">{l.biz}</div>
-                </div>
-                <div className="text-xs font-bold text-gray-700 mx-2">{l.amt}</div>
-                <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${l.color}`}>{l.status}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Telecaller performance */}
-        <div>
-          <div className="text-xs font-semibold text-gray-600 mb-2">Team Performance</div>
-          <div className="space-y-2">
-            {[
-              { name: 'Arjun Sharma', pct: 85 },
-              { name: 'Priya Verma', pct: 72 },
-              { name: 'Rahul Nair', pct: 64 },
-            ].map(t => (
-              <div key={t.name} className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 text-[10px] font-bold flex items-center justify-center flex-shrink-0">
-                  {t.name[0]}
-                </div>
-                <div className="flex-1">
-                  <div className="flex justify-between mb-0.5"><span className="text-[10px] font-medium text-gray-700">{t.name}</span><span className="text-[10px] text-gray-500">{t.pct}%</span></div>
-                  <div className="h-1.5 bg-gray-100 rounded-full"><div className="h-full bg-indigo-500 rounded-full" style={{ width: `${t.pct}%` }} /></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-// ─── Problem Card ─────────────────────────────────────────────────────────────
-function ProblemCard({ icon: Icon, title, desc }) {
-  return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200 group">
-      <div className="w-10 h-10 bg-red-50 rounded-xl flex items-center justify-center mb-4 group-hover:bg-red-100 transition-colors">
-        <Icon size={20} className="text-red-500" />
-      </div>
-      <h3 className="font-semibold text-gray-900 mb-2">{title}</h3>
-      <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
-    </div>
-  )
-}
-
-// ─── Feature Card ─────────────────────────────────────────────────────────────
-function FeatureCard({ icon: Icon, title, desc }) {
-  return (
-    <div className="flex gap-4 p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-all duration-200 group">
-      <div className="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-indigo-100 transition-colors">
-        <Icon size={20} className="text-indigo-600" />
-      </div>
-      <div>
-        <h3 className="font-semibold text-gray-900 mb-1">{title}</h3>
-        <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
-      </div>
-    </div>
-  )
-}
-
-// ─── Telecaller Workspace Preview ─────────────────────────────────────────────
-function WorkspacePreview() {
-  return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-xl overflow-hidden">
-      {/* Header */}
-      <div className="bg-indigo-600 px-5 py-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="text-white font-semibold">Lead #1024</div>
-            <div className="text-indigo-200 text-xs mt-0.5">Bengaluru, Karnataka</div>
-          </div>
-          <span className="bg-emerald-400 text-emerald-900 text-xs font-semibold px-2.5 py-1 rounded-full">Interested</span>
-        </div>
-      </div>
-
-      <div className="p-5 space-y-4">
-        {/* Lead info */}
-        <div>
-          <div className="text-lg font-bold text-gray-900">Rajesh Kumar</div>
-          <div className="text-sm text-gray-500">Sharma Traders · Wholesale</div>
-          <div className="text-sm text-gray-500 mt-0.5">📞 +91 98XXX XXXXX</div>
-        </div>
-
-        {/* Financials */}
-        <div className="grid grid-cols-2 gap-3">
+        {/* Funnel row */}
+        <div className="grid grid-cols-4 gap-2">
           {[
-            { label: 'Monthly Turnover', value: '₹8,50,000' },
-            { label: 'Required Loan', value: '₹15,00,000' },
-          ].map(f => (
-            <div key={f.label} className="bg-gray-50 rounded-xl p-3">
-              <div className="text-xs text-gray-500 mb-1">{f.label}</div>
-              <div className="text-sm font-bold text-gray-900">{f.value}</div>
+            { label: 'Docs Pending', value: '18', badge: 'bg-amber-100 text-amber-800' },
+            { label: 'Bank Login', value: '12', badge: 'bg-violet-100 text-violet-800' },
+            { label: 'Approval', value: '6', badge: 'bg-sky-100 text-sky-800' },
+            { label: 'Disbursed', value: '3', badge: 'bg-emerald-100 text-emerald-800' },
+          ].map(s => (
+            <div key={s.label} className="bg-slate-50 rounded-xl p-2 text-center border border-slate-100">
+              <div className="text-xs font-bold text-slate-800">{s.value}</div>
+              <div className="text-[9px] text-slate-500 font-medium truncate">{s.label}</div>
             </div>
           ))}
         </div>
 
-        {/* Call button */}
-        <button className="w-full py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2">
-          <Phone size={18} />
-          Call Now
-        </button>
-
-        {/* Outcomes preview */}
+        {/* Telecaller performance table */}
         <div>
-          <div className="text-xs font-semibold text-gray-600 mb-2">Call Outcome</div>
-          <div className="flex flex-wrap gap-1.5">
-            {['Interested', 'Call Later', 'No Response', 'Not Eligible'].map(o => (
-              <span key={o} className="text-xs px-2.5 py-1 rounded-lg border border-gray-200 text-gray-600 hover:border-indigo-300 hover:bg-indigo-50 cursor-pointer transition-all">{o}</span>
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs font-bold text-slate-700">Telecaller Live Funnel</span>
+            <span className="text-[10px] text-slate-400">Target: 60 Calls/Day</span>
+          </div>
+          <div className="space-y-1.5">
+            {[
+              { name: 'Priya Verma', calls: 65, conn: 42, int: 14, login: 4 },
+              { name: 'Asha Sharma', calls: 58, conn: 37, int: 11, login: 3 },
+              { name: 'Kavya Nair', calls: 72, conn: 45, int: 13, login: 4 },
+            ].map(t => (
+              <div key={t.name} className="flex items-center justify-between py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100 text-xs">
+                <div className="flex items-center gap-2">
+                  <div className="w-5 h-5 rounded-full bg-indigo-600 text-white text-[9px] font-bold flex items-center justify-center">
+                    {t.name[0]}
+                  </div>
+                  <span className="font-semibold text-slate-800">{t.name}</span>
+                </div>
+                <div className="flex gap-3 text-[11px]">
+                  <span className="text-slate-500">📞 {t.calls}</span>
+                  <span className="text-emerald-700 font-bold">✨ {t.int}</span>
+                  <span className="text-indigo-700 font-bold">🏦 {t.login}</span>
+                </div>
+              </div>
             ))}
           </div>
+        </div>
+
+        {/* Banker match preview */}
+        <div className="bg-indigo-900/90 text-white rounded-xl p-3">
+          <div className="flex items-center justify-between mb-1.5">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-200">
+              <Landmark size={14} />
+              Banker Matching Engine
+            </div>
+            <span className="text-[9px] bg-emerald-500 text-slate-950 font-bold px-2 py-0.5 rounded-full">High Fit</span>
+          </div>
+          <p className="text-[11px] text-indigo-100">
+            Rajesh Kumar (Hardware · ₹1.2Cr Turnover) matched with <strong className="text-white">Banker A & NBFC B</strong>.
+          </p>
         </div>
       </div>
     </div>
   )
 }
 
-// ─── Pipeline Column ──────────────────────────────────────────────────────────
-function PipelineColumn({ stage, count, leads }) {
-  const stageColors = {
-    'New Lead': 'bg-slate-100 text-slate-600',
-    'Contacted': 'bg-blue-100 text-blue-600',
-    'Interested': 'bg-emerald-100 text-emerald-700',
-    'Documents Pending': 'bg-amber-100 text-amber-700',
-    'Login': 'bg-violet-100 text-violet-700',
-    'Approval': 'bg-orange-100 text-orange-700',
-    'Disbursement': 'bg-green-100 text-green-800',
-  }
-  const col = stageColors[stage] || 'bg-gray-100 text-gray-600'
+// ─── One Customer One Record Timeline Preview ─────────────────────────────────
+function OneRecordPreview() {
   return (
-    <div className="min-w-[200px] flex-shrink-0">
-      <div className="flex items-center justify-between mb-3">
-        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${col}`}>{stage}</span>
-        <span className="text-xs font-bold text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{count}</span>
+    <div className="bg-white rounded-2xl border border-gray-100 shadow-xl p-5 space-y-4">
+      <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+        <div>
+          <div className="flex items-center gap-2">
+            <h4 className="text-base font-bold text-slate-900">Rajesh Kumar</h4>
+            <span className="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded-full">🔥 Hot Lead</span>
+          </div>
+          <p className="text-xs text-slate-500">Sharma Traders · Hardware · Turnover: ₹1.20 Cr · Required: ₹25L</p>
+        </div>
+        <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg">
+          Assigned to: Priya
+        </span>
       </div>
-      <div className="space-y-2.5">
-        {leads.map((l, i) => (
-          <div key={i} className="bg-white rounded-xl border border-gray-100 p-3 shadow-sm hover:shadow-md transition-all cursor-pointer hover:border-indigo-200">
-            <div className="text-xs font-semibold text-gray-800 truncate">{l.name}</div>
-            <div className="text-[11px] text-gray-500 truncate">{l.biz}</div>
-            <div className="mt-2 flex items-center justify-between">
-              <span className="text-xs font-bold text-indigo-600">{l.amount}</span>
-              <div className="w-5 h-5 rounded-full bg-gray-100 text-[9px] font-bold text-gray-600 flex items-center justify-center">{l.assignee[0]}</div>
+
+      {/* Unified Timeline */}
+      <div className="space-y-3">
+        <div className="text-xs font-bold text-slate-600 uppercase tracking-wider">Unified 360° Activity Record</div>
+
+        {[
+          { icon: PhoneCall, color: 'text-blue-600 bg-blue-50', title: 'First Telecall Initiated', time: '01-Sep 10:15 AM', detail: 'Duration: 3 min · Outcome: Interested · Req: ₹25L' },
+          { icon: MessageSquare, color: 'text-emerald-600 bg-emerald-50', title: 'WhatsApp Business API Template Sent', time: '01-Sep 10:18 AM', detail: 'Sent Document List via Official Business API' },
+          { icon: Mic, color: 'text-violet-600 bg-violet-50', title: '🎙️ Voice Remark Logged', time: '01-Sep 10:20 AM', detail: '"Customer has 5-yr vintage, GST available. Call back tomorrow 11 AM."' },
+          { icon: FileText, color: 'text-amber-600 bg-amber-50', title: 'KYC & GST Documents Uploaded', time: '02-Sep 02:30 PM', detail: 'ITR 2 yrs, GST Returns, Bank Statement 12 Months' },
+          { icon: Landmark, color: 'text-indigo-600 bg-indigo-50', title: 'Banker Match Recommended', time: '02-Sep 04:00 PM', detail: 'Mapped to HDFC Bank (Login Stage)' },
+        ].map((item, idx) => (
+          <div key={idx} className="flex gap-3 text-xs">
+            <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${item.color}`}>
+              <item.icon size={14} />
+            </div>
+            <div className="flex-1 bg-slate-50 rounded-xl p-2.5 border border-slate-100">
+              <div className="flex items-center justify-between mb-0.5">
+                <span className="font-bold text-slate-800">{item.title}</span>
+                <span className="text-[10px] text-slate-400">{item.time}</span>
+              </div>
+              <div className="text-slate-600 text-[11px]">{item.detail}</div>
             </div>
           </div>
         ))}
@@ -214,373 +152,358 @@ function PipelineColumn({ stage, count, leads }) {
   )
 }
 
-// ─── Step Card ────────────────────────────────────────────────────────────────
-function StepCard({ num, icon: Icon, title, desc }) {
-  return (
-    <div className="relative flex flex-col items-center text-center">
-      <div className="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center mb-4 shadow-md shadow-indigo-200">
-        <Icon size={24} className="text-white" />
-      </div>
-      <div className="absolute -top-2 -right-2 w-7 h-7 bg-white border-2 border-indigo-600 rounded-full flex items-center justify-center text-xs font-bold text-indigo-600">{num}</div>
-      <h3 className="font-semibold text-gray-900 mb-2">{title}</h3>
-      <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
-    </div>
-  )
-}
-
 // ─── Main Landing Page ────────────────────────────────────────────────────────
 export default function Landing() {
-  const pipelineData = [
-    { stage: 'New Lead', count: 142, leads: [{ name: 'Meena Pillai', biz: 'Pillai Saree House', amount: '₹8L', assignee: 'Vijay' }, { name: 'Farhan Sheikh', biz: 'Sheikh Logistics', amount: '₹18L', assignee: 'Priya' }] },
-    { stage: 'Interested', count: 64, leads: [{ name: 'Rajesh Kumar', biz: 'Sharma Traders', amount: '₹15L', assignee: 'Arjun' }, { name: 'Ravi Menon', biz: 'Menon Auto', amount: '₹22L', assignee: 'Priya' }] },
-    { stage: 'Documents Pending', count: 38, leads: [{ name: 'Sunita Agarwal', biz: 'Agarwal Textiles', amount: '₹25L', assignee: 'Priya' }] },
-    { stage: 'Login', count: 22, leads: [{ name: 'Deepa Nair', biz: 'Nair Organic Foods', amount: '₹20L', assignee: 'Vijay' }] },
-    { stage: 'Approval', count: 9, leads: [{ name: 'Suresh Yadav', biz: 'Yadav Agro', amount: '₹12L', assignee: 'Sneha' }] },
-    { stage: 'Disbursement', count: 6, leads: [{ name: 'Lakshmi Iyer', biz: 'Iyer Software', amount: '₹40L', assignee: 'Arjun' }] },
+  const [selectedOutcome, setSelectedOutcome] = useState('Interested')
+
+  const outcomes = [
+    '1. Interested',
+    '2. Not Interested',
+    '3. Call Later',
+    '4. Number Busy',
+    '5. No Response',
+    '6. Wrong Number',
+    '7. Already Taken Loan',
+    '8. Loan Required – Docs Pending',
+    '9. Eligible – Send Docs',
+    '10. Not Eligible'
+  ]
+
+  const pipelineStages = [
+    { name: 'NEW LEAD', color: 'bg-slate-100 text-slate-700' },
+    { name: 'CONTACTED', color: 'bg-blue-100 text-blue-700' },
+    { name: 'INTERESTED', color: 'bg-emerald-100 text-emerald-800' },
+    { name: 'ELIGIBILITY CHECK', color: 'bg-sky-100 text-sky-800' },
+    { name: 'DOCUMENTS PENDING', color: 'bg-amber-100 text-amber-800' },
+    { name: 'LOGIN', color: 'bg-violet-100 text-violet-800' },
+    { name: 'CREDIT / PD', color: 'bg-pink-100 text-pink-800' },
+    { name: 'APPROVAL', color: 'bg-indigo-100 text-indigo-800' },
+    { name: 'DISBURSEMENT', color: 'bg-emerald-600 text-white font-bold' },
   ]
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden font-sans bg-slate-50">
 
       {/* ─── HERO ─── */}
-      <section id="home" className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/30 to-white pt-24 pb-20 relative">
-        {/* Background decoration */}
+      <section id="home" className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white pt-24 pb-20 relative">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-32 right-0 w-96 h-96 bg-indigo-100/40 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-50/60 rounded-full blur-3xl" />
+          <div className="absolute top-20 right-10 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-3xl" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left */}
-            <div className="animate-fade-in">
-              <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 rounded-full px-4 py-1.5 mb-6">
-                <span className="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" />
-                <span className="text-sm font-medium text-indigo-700">Built for Business Loan Teams</span>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            
+            {/* Left Column */}
+            <div>
+              <div className="inline-flex items-center gap-2 bg-indigo-900/60 border border-indigo-700/60 rounded-full px-4 py-1.5 mb-6">
+                <Sparkles size={14} className="text-amber-400" />
+                <span className="text-xs font-semibold text-indigo-200 tracking-wide">
+                  SHRI SIDDHAROODHA BUSINESS LOAN CRM (LoanConnect)
+                </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
-                Turn Every Lead Into a{' '}
-                <span className="text-indigo-600 relative">
-                  Loan Opportunity
-                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
-                    <path d="M2 8C60 2 140 2 298 8" stroke="#6366f1" strokeWidth="3" strokeLinecap="round" />
-                  </svg>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 tracking-tight">
+                Purpose-Built For <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-400 to-emerald-400">
+                  Business Loan Telecalling
                 </span>
               </h1>
 
-              <p className="text-lg text-gray-500 leading-relaxed mb-8 max-w-xl">
-                A powerful CRM built for business loan telecalling teams. Manage leads, calls, follow-ups, documents, and loan applications — all from one workspace.
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-xl">
+                The complete Telecalling CRM + Auto Dialer + WhatsApp Automation + Banker Matching Engine designed specifically for loan DSAs, ASMs, and telecaller teams.
               </p>
 
-              <div className="flex flex-wrap gap-3 mb-10">
-                <Link to="/login" className="inline-flex items-center gap-2 px-6 py-3.5 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 shadow-md shadow-indigo-200 transition-all duration-200 hover:translate-y-[-1px]">
-                  Get Started
+              <div className="flex flex-wrap gap-4 mb-10">
+                <Link to="/login" className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-bold rounded-xl hover:from-indigo-600 hover:to-indigo-700 shadow-lg shadow-indigo-500/30 transition-all duration-200">
+                  Sign In to System
                   <ArrowRight size={18} />
                 </Link>
-                <a href="#features" className="inline-flex items-center gap-2 px-6 py-3.5 bg-white text-gray-700 font-semibold rounded-xl border border-gray-200 hover:border-indigo-300 hover:bg-indigo-50 transition-all duration-200">
-                  Explore Features
+                <a href="#features" className="inline-flex items-center gap-2 px-6 py-3.5 bg-slate-800/80 text-slate-200 font-semibold rounded-xl border border-slate-700 hover:bg-slate-800 transition-all duration-200">
+                  Explore Specification
                   <ChevronRight size={18} />
                 </a>
               </div>
 
-              {/* Trust signals */}
-              <div className="flex items-center gap-4">
-                <div className="flex -space-x-2">
-                  {['A', 'P', 'R', 'V', 'S'].map((l, i) => (
-                    <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 text-white text-xs font-bold flex items-center justify-center border-2 border-white">{l}</div>
-                  ))}
+              {/* Badges */}
+              <div className="grid grid-cols-3 gap-3 border-t border-slate-800/80 pt-6">
+                <div>
+                  <div className="text-xl font-bold text-white">1 Record</div>
+                  <div className="text-xs text-slate-400">Calls + WhatsApp + Docs</div>
                 </div>
                 <div>
-                  <div className="flex items-center gap-0.5 mb-0.5">
-                    {[...Array(5)].map((_, i) => <Star key={i} size={12} className="fill-amber-400 text-amber-400" />)}
-                  </div>
-                  <p className="text-xs text-gray-500">Trusted by 50+ loan teams</p>
+                  <div className="text-xl font-bold text-emerald-400">10 Outcomes</div>
+                  <div className="text-xs text-slate-400">2-Sec Call Logging</div>
+                </div>
+                <div>
+                  <div className="text-xl font-bold text-sky-400">Banker Match</div>
+                  <div className="text-xs text-slate-400">Automated Rules Engine</div>
                 </div>
               </div>
             </div>
 
-            {/* Right — Dashboard Preview */}
-            <div className="animate-fade-in relative hidden lg:block">
-              <div className="absolute -top-6 -right-6 w-full h-full bg-indigo-100/30 rounded-2xl" />
+            {/* Right Column */}
+            <div className="relative hidden lg:block">
               <DashboardPreview />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── STATS ─── */}
-      <section className="bg-indigo-600 py-14">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { value: '50+', label: 'Business Locations' },
-              { value: '10K+', label: 'Leads Managed' },
-              { value: '95%', label: 'Follow-up Visibility' },
-              { value: '24/7', label: 'CRM Accessibility' },
-            ].map(s => (
-              <div key={s.label}>
-                <div className="text-3xl font-bold text-white mb-1">{s.value}</div>
-                <div className="text-indigo-200 text-sm">{s.label}</div>
+      {/* ─── 3 LEVEL SYSTEM ARCHITECTURE ─── */}
+      <section id="architecture" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-block text-xs font-bold text-indigo-600 bg-indigo-50 px-3.5 py-1 rounded-full uppercase tracking-wider mb-3">
+              System Architecture
+            </div>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">
+              Designed For 3 Tier Operational Workflow
+            </h2>
+            <p className="text-slate-500 max-w-2xl mx-auto text-sm leading-relaxed">
+              Every level of your loan organization has a dedicated workspace designed specifically for their daily tasks.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            
+            {/* Level 1 */}
+            <div className="bg-slate-50 rounded-2xl p-7 border border-slate-200 hover:border-indigo-300 transition-all shadow-sm">
+              <div className="w-12 h-12 bg-indigo-600 text-white rounded-xl flex items-center justify-center mb-5 shadow-md">
+                <BarChart2 size={24} />
+              </div>
+              <div className="text-xs font-bold text-indigo-600 uppercase tracking-wide mb-1">Level 1</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Super Admin & ASM Dashboard</h3>
+              <p className="text-slate-600 text-xs leading-relaxed mb-4">
+                Full organizational oversight across leads, telecallers, DSAs, lenders, locations, and revenue conversion metrics.
+              </p>
+              <ul className="space-y-2 text-xs text-slate-700">
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-indigo-600" /> Total, Today's & Assigned Leads</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-indigo-600" /> Connected vs Interested Calls</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-indigo-600" /> Login, Approval & Disbursement MIS</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-indigo-600" /> Telecaller & Banker-wise Performance</li>
+              </ul>
+            </div>
+
+            {/* Level 2 */}
+            <div className="bg-slate-50 rounded-2xl p-7 border border-slate-200 hover:border-emerald-300 transition-all shadow-sm">
+              <div className="w-12 h-12 bg-emerald-600 text-white rounded-xl flex items-center justify-center mb-5 shadow-md">
+                <PhoneCall size={24} />
+              </div>
+              <div className="text-xs font-bold text-emerald-600 uppercase tracking-wide mb-1">Level 2</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Telecaller Workspace</h3>
+              <p className="text-slate-600 text-xs leading-relaxed mb-4">
+                Fast, focused one-lead-at-a-time calling queue with business financials, auto-dialer, and 2-second outcome logging.
+              </p>
+              <ul className="space-y-2 text-xs text-slate-700">
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-600" /> Customer Name, Turnover, Loan Req</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-600" /> 1-Click Auto Call Dialing</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-600" /> 10 Predefined Call Outcomes</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-emerald-600" /> 🎙️ Voice Remarks & Quick Remarks</li>
+              </ul>
+            </div>
+
+            {/* Level 3 */}
+            <div className="bg-slate-50 rounded-2xl p-7 border border-slate-200 hover:border-sky-300 transition-all shadow-sm">
+              <div className="w-12 h-12 bg-sky-600 text-white rounded-xl flex items-center justify-center mb-5 shadow-md">
+                <MessageSquare size={24} />
+              </div>
+              <div className="text-xs font-bold text-sky-600 uppercase tracking-wide mb-1">Level 3</div>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">WhatsApp Business API</h3>
+              <p className="text-slate-600 text-xs leading-relaxed mb-4">
+                Official WhatsApp Business API integration triggering verified document checklist templates instantly when marked Interested.
+              </p>
+              <ul className="space-y-2 text-xs text-slate-700">
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-sky-600" /> Official Business API Integration</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-sky-600" /> Verified Pre-Approved Templates</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-sky-600" /> Automated Document Collection</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-sky-600" /> Integrated Timeline & Reply Tracking</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ─── ONE CUSTOMER ONE RECORD FEATURE ─── */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-block text-xs font-bold text-amber-400 bg-amber-950/80 border border-amber-800 px-3.5 py-1 rounded-full uppercase tracking-wider mb-4">
+                Core Feature
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 leading-tight">
+                ONE CUSTOMER = ONE RECORD
+              </h2>
+              <p className="text-slate-300 text-sm leading-relaxed mb-6">
+                No more switching between dialing apps, WhatsApp, spreadsheets, and emails. Everything related to a customer lives in a single, unified 360° record timeline.
+              </p>
+              <ul className="space-y-3 text-xs text-slate-200">
+                {[
+                  'Complete call history with duration and disposition logs',
+                  'WhatsApp messages sent and customer responses attached',
+                  'Voice notes stored and transcribed to text',
+                  'Uploaded KYC, GST, and ITR documents in profile',
+                  'Banker matching recommendations & sanction status',
+                ].map((feat, i) => (
+                  <li key={i} className="flex items-center gap-3 bg-slate-800/60 p-3 rounded-xl border border-slate-700/60">
+                    <CheckCircle size={16} className="text-emerald-400 shrink-0" />
+                    <span>{feat}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <OneRecordPreview />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── BANKER MATCHING ENGINE & LEAD FORM ─── */}
+      <section id="banker-matching" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-block text-xs font-bold text-indigo-600 bg-indigo-50 px-3.5 py-1 rounded-full uppercase tracking-wider mb-3">
+              Automated Intelligence
+            </div>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">
+              Banker Matching Engine & Business Loan Lead Schema
+            </h2>
+            <p className="text-slate-500 max-w-xl mx-auto text-sm">
+              Instantly match business profiles to the right banking partners based on internal eligibility rules.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            
+            {/* Banker Engine */}
+            <div className="bg-indigo-950 text-white rounded-2xl p-7 border border-indigo-900 shadow-lg">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center">
+                  <Landmark size={20} className="text-white" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold">Banker Matching Engine</h3>
+                  <p className="text-xs text-indigo-300">Configurable Lender Eligibility Criteria</p>
+                </div>
+              </div>
+
+              <div className="space-y-3 text-xs mb-6">
+                <div className="bg-indigo-900/60 p-3 rounded-xl border border-indigo-800">
+                  <div className="font-bold text-indigo-200 mb-1">Input Criteria:</div>
+                  <div className="text-slate-300">Loan: ₹30L · Turnover: ₹1.5Cr · Vintage: 5 Yrs · GST: Yes · ITR: Yes · Location: Hubli</div>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between p-2.5 bg-emerald-950/80 border border-emerald-800 rounded-xl text-emerald-200">
+                    <span className="font-bold">Banker A (HDFC Bank)</span>
+                    <span className="text-[10px] font-bold bg-emerald-500 text-slate-950 px-2 py-0.5 rounded-full">High Probability</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2.5 bg-indigo-900/40 border border-indigo-800 rounded-xl text-indigo-200">
+                    <span className="font-bold">Banker B (ICICI Bank)</span>
+                    <span className="text-[10px] font-bold bg-indigo-500 text-white px-2 py-0.5 rounded-full">Medium Probability</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2.5 bg-slate-900/40 border border-slate-800 rounded-xl text-slate-300">
+                    <span className="font-bold">NBFC C (Bajaj Finance)</span>
+                    <span className="text-[10px] font-bold bg-slate-700 text-slate-200 px-2 py-0.5 rounded-full">Backup Option</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Lead Form Schema */}
+            <div className="bg-slate-50 rounded-2xl p-7 border border-slate-200">
+              <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                <FileText size={20} className="text-indigo-600" />
+                Business Loan Lead Form Schema
+              </h3>
+              <div className="grid grid-cols-2 gap-3 text-xs">
+                <div className="bg-white p-3 rounded-xl border border-slate-200">
+                  <div className="font-bold text-indigo-600 mb-1">Customer Details</div>
+                  <ul className="space-y-1 text-slate-600 text-[11px]">
+                    <li>• Customer Name & Mobile</li>
+                    <li>• Alternate Phone</li>
+                    <li>• City, Location, Pincode</li>
+                  </ul>
+                </div>
+                <div className="bg-white p-3 rounded-xl border border-slate-200">
+                  <div className="font-bold text-indigo-600 mb-1">Business Details</div>
+                  <ul className="space-y-1 text-slate-600 text-[11px]">
+                    <li>• Business Name & Type</li>
+                    <li>• Vintage & Ownership</li>
+                    <li>• GST / ITR / Banking Available</li>
+                  </ul>
+                </div>
+                <div className="bg-white p-3 rounded-xl border border-slate-200">
+                  <div className="font-bold text-indigo-600 mb-1">Financial Details</div>
+                  <ul className="space-y-1 text-slate-600 text-[11px]">
+                    <li>• Monthly & Annual Turnover</li>
+                    <li>• Existing Loans & EMI</li>
+                    <li>• CIBIL Range & Loan Req.</li>
+                  </ul>
+                </div>
+                <div className="bg-white p-3 rounded-xl border border-slate-200">
+                  <div className="font-bold text-indigo-600 mb-1">Loan Purpose & Source</div>
+                  <ul className="space-y-1 text-slate-600 text-[11px]">
+                    <li>• Working Capital / Expansion</li>
+                    <li>• Machinery / BT</li>
+                    <li>• Source: Telecaller, DSA, Digital</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ─── 9 STAGE LOAN PIPELINE ─── */}
+      <section id="pipeline" className="py-20 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <div className="inline-block text-xs font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-800 px-3.5 py-1 rounded-full uppercase tracking-wider mb-3">
+              Funnel Management
+            </div>
+            <h2 className="text-3xl font-extrabold mb-4">9-Stage Business Loan Pipeline</h2>
+            <p className="text-slate-400 text-sm max-w-xl mx-auto">
+              Track lead stage progression with complete visibility from initial contact to bank disbursement.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2">
+            {pipelineStages.map((st, idx) => (
+              <div key={st.name} className="flex flex-col items-center text-center p-3 rounded-xl bg-slate-800/80 border border-slate-700/80">
+                <span className="text-[10px] font-bold text-slate-400 mb-1">0{idx + 1}</span>
+                <span className={`text-[10px] font-bold px-2 py-1 rounded-lg w-full ${st.color}`}>
+                  {st.name}
+                </span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── PROBLEMS ─── */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <div className="inline-block text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full mb-4">The Problem</div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Managing Loan Leads Shouldn't Be Complicated</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">Most loan teams are stuck with scattered data, missed follow-ups, and zero visibility.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <ProblemCard icon={Database} title="Scattered Lead Data" desc="Customer information is spread across spreadsheets, WhatsApp chats, and sticky notes." />
-            <ProblemCard icon={Bell} title="Missed Follow-ups" desc="Important callbacks get forgotten, leading to lost loan opportunities." />
-            <ProblemCard icon={FileText} title="Manual Tracking" desc="Telecallers spend hours updating spreadsheets instead of calling leads." />
-            <ProblemCard icon={AlertCircle} title="Limited Visibility" desc="Managers can't easily understand team performance or pipeline health." />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── SOLUTION / FEATURES ─── */}
-      <section id="features" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <div className="inline-block text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full mb-4">The Solution</div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Everything Your Loan Team Needs in One CRM</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">Designed from the ground up for business loan telecalling workflows.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <FeatureCard icon={Users} title="Lead Management" desc="Import, assign, track, and manage business loan leads. Bulk CSV upload with validation." />
-            <FeatureCard icon={Phone} title="Smart Calling Workflow" desc="Telecallers can quickly view a lead and initiate a call. One-click disposition logging." />
-            <FeatureCard icon={Bell} title="Follow-up Management" desc="Never miss an important callback. Overdue alerts, today's list, and upcoming queue." />
-            <FeatureCard icon={Layers} title="Loan Pipeline" desc="Track leads from New Lead to Disbursement across 9 clearly defined stages." />
-            <FeatureCard icon={BarChart2} title="Team Performance" desc="Managers monitor call volume, connection rate, and conversion metrics in real time." />
-            <FeatureCard icon={Activity} title="Customer Timeline" desc="Calls, follow-ups, WhatsApp messages, documents, and status changes — all in one view." />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── FEATURE SHOWCASE 1 — Lead Table ─── */}
-      <section className="py-20 bg-gray-50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-block text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full mb-4">Lead Management</div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Every Lead. Fully Organized.</h2>
-              <p className="text-gray-500 mb-6 leading-relaxed">Import leads from CSV, assign to telecallers, filter by status, and track follow-ups — all in one powerful table view.</p>
-              <ul className="space-y-3">
-                {['Bulk CSV import with validation', 'One-click telecaller assignment', 'Status filter and search', 'Inline follow-up scheduling'].map(f => (
-                  <li key={f} className="flex items-center gap-2.5 text-sm text-gray-700">
-                    <CheckCircle size={16} className="text-emerald-500 shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            {/* Lead Table Preview */}
-            <div className="bg-white rounded-2xl border border-gray-100 shadow-xl overflow-hidden">
-              <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
-                <span className="font-semibold text-gray-800 text-sm">All Leads</span>
-                <span className="text-xs bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full font-medium">12,540 total</span>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-xs">
-                  <thead>
-                    <tr className="border-b border-gray-100 bg-gray-50">
-                      {['Customer', 'Business', 'Loan Amt', 'Status', 'Assigned'].map(h => (
-                        <th key={h} className="text-left px-4 py-2.5 text-gray-500 font-medium">{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      { name: 'Rajesh Kumar', biz: 'Sharma Traders', amt: '₹15L', status: 'Interested', statusCls: 'bg-emerald-50 text-emerald-700', assignee: 'Arjun' },
-                      { name: 'Sunita Agarwal', biz: 'Agarwal Textiles', amt: '₹25L', status: 'Docs Pending', statusCls: 'bg-amber-50 text-amber-700', assignee: 'Priya' },
-                      { name: 'Kavitha Reddy', biz: 'Reddy Pharma', amt: '₹35L', status: 'Login', statusCls: 'bg-violet-50 text-violet-700', assignee: 'Arjun' },
-                      { name: 'Amit Bansal', biz: 'Bansal Const.', amt: '₹50L', status: 'Credit/PD', statusCls: 'bg-pink-50 text-pink-700', assignee: 'Rahul' },
-                    ].map(r => (
-                      <tr key={r.name} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
-                        <td className="px-4 py-3 font-medium text-gray-800">{r.name}</td>
-                        <td className="px-4 py-3 text-gray-500">{r.biz}</td>
-                        <td className="px-4 py-3 font-semibold text-gray-800">{r.amt}</td>
-                        <td className="px-4 py-3"><span className={`px-2 py-0.5 rounded-full text-[11px] font-medium ${r.statusCls}`}>{r.status}</span></td>
-                        <td className="px-4 py-3 text-gray-500">{r.assignee}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── FEATURE SHOWCASE 2 — Telecaller Workspace ─── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1">
-              <WorkspacePreview />
-            </div>
-            <div className="order-1 lg:order-2">
-              <div className="inline-block text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full mb-4">Telecaller Workspace</div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Built for Speed. Optimized for Calls.</h2>
-              <p className="text-gray-500 mb-6 leading-relaxed">The telecaller dashboard surfaces one lead at a time with all context needed — no tab-switching, no confusion. Log the outcome in seconds.</p>
-              <ul className="space-y-3">
-                {['Next-lead queue with full business context', 'One-click call initiation', '10 call outcomes for precise logging', 'Follow-up scheduling in 2 clicks', 'Real-time remarks and notes'].map(f => (
-                  <li key={f} className="flex items-center gap-2.5 text-sm text-gray-700">
-                    <Zap size={16} className="text-indigo-500 shrink-0" />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── PIPELINE ─── */}
-      <section id="pipeline" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-block text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full mb-4">Loan Pipeline</div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Track Every Loan From Lead to Disbursement</h2>
-            <p className="text-gray-500 max-w-lg mx-auto">A 9-stage Kanban pipeline with real-time counts and lead cards for instant visibility.</p>
-          </div>
-          <div className="overflow-x-auto pb-4">
-            <div className="flex gap-4 min-w-max px-1">
-              {pipelineData.map(col => (
-                <PipelineColumn key={col.stage} {...col} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── HOW IT WORKS ─── */}
-      <section id="how-it-works" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <div className="inline-block text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full mb-4">How It Works</div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Simple 4-Step Workflow</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 relative">
-            {/* Connector line (desktop only) */}
-            <div className="absolute top-7 left-[12%] right-[12%] h-0.5 bg-indigo-100 hidden lg:block" />
-            <StepCard num="01" icon={Upload} title="Import Leads" desc="Upload CSV files. Smart validation removes duplicates and flags invalid entries before import." />
-            <StepCard num="02" icon={UserCheck} title="Assign Leads" desc="Auto or manual assignment of leads to the right telecaller based on territory or workload." />
-            <StepCard num="03" icon={PhoneCall} title="Call & Follow Up" desc="Telecallers call leads, log outcomes from 10 predefined dispositions, and schedule follow-ups." />
-            <StepCard num="04" icon={Target} title="Track & Convert" desc="Managers monitor team performance and guide leads through the 9-stage loan pipeline to disbursement." />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── DASHBOARD SHOWCASE ─── */}
-      <section id="dashboards" className="py-20 bg-gray-950 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <div className="inline-block text-xs font-semibold text-indigo-400 bg-indigo-900/50 border border-indigo-800 px-3 py-1 rounded-full mb-4">Role-Based Dashboards</div>
-            <h2 className="text-3xl font-bold mb-4">The Right View for Every Role</h2>
-            <p className="text-gray-400 max-w-xl mx-auto">Admin, ASM, and Telecaller each get a dashboard designed specifically for their workflow.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                role: 'Admin', icon: BarChart2, color: 'indigo',
-                stats: ['Total Leads · 12,540', 'Calls Today · 426', 'Connected · 287', 'Interested · 64', 'Conversion Rate · 5.2%'],
-                desc: 'Full organizational visibility. Upload leads, manage telecallers, and see revenue-level reporting.',
-              },
-              {
-                role: 'ASM', icon: Users, color: 'blue',
-                stats: ['Team Leads · 3,120', 'Today\'s Follow-ups · 28', 'Overdue · 5', 'Team Calls · 142', 'Leaderboard'],
-                desc: 'Team-level performance dashboards. Lead the team with data-driven insights.',
-              },
-              {
-                role: 'Telecaller', icon: Phone, color: 'emerald',
-                stats: ['Today\'s Leads · 24', 'Calls Made · 18', 'Follow-ups · 5', 'Overdue · 1', 'Interested · 4'],
-                desc: 'Clean, fast, focused workspace. The next lead is always one click away.',
-              },
-            ].map(d => {
-              const colors = { indigo: 'border-indigo-700 bg-indigo-900/30', blue: 'border-blue-700 bg-blue-900/30', emerald: 'border-emerald-700 bg-emerald-900/30' }
-              const iconColors = { indigo: 'bg-indigo-600', blue: 'bg-blue-600', emerald: 'bg-emerald-600' }
-              return (
-                <div key={d.role} className={`rounded-2xl border p-6 ${colors[d.color]} hover:scale-[1.02] transition-transform duration-200`}>
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${iconColors[d.color]}`}>
-                    <d.icon size={20} className="text-white" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">{d.role} Dashboard</h3>
-                  <p className="text-gray-400 text-sm mb-4 leading-relaxed">{d.desc}</p>
-                  <ul className="space-y-1.5 mb-6">
-                    {d.stats.map(s => (
-                      <li key={s} className="text-xs text-gray-300 flex items-center gap-2">
-                        <div className="w-1 h-1 rounded-full bg-gray-500" />{s}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link to="/login" className="inline-flex items-center gap-1.5 text-sm font-medium text-white hover:gap-2.5 transition-all duration-150">
-                    View Dashboard <ArrowRight size={15} />
-                  </Link>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── SECURITY ─── */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-block text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full mb-4">Security</div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Built With Security in Mind</h2>
-              <p className="text-gray-500 mb-6 leading-relaxed">Your customer data is sensitive. LoanFlow is designed with data protection and access control as core principles.</p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { icon: Lock, title: 'Role-Based Access', desc: 'Admin, ASM, Telecaller roles with fine-grained permissions.' },
-                { icon: Shield, title: 'Secure Authentication', desc: 'Token-based auth, session management, and secure login flows.' },
-                { icon: Database, title: 'Protected Customer Data', desc: 'PII hashing and restricted data exposure by role.' },
-                { icon: Activity, title: 'Audit-Ready Logs', desc: 'Full audit trail of lead changes, calls, and document access.' },
-                { icon: UserCheck, title: 'Server-Side Control', desc: 'Authorization enforced at the API level, not just UI.' },
-                { icon: FileText, title: 'Document Security', desc: 'Secure document storage with access control policies.' },
-              ].map(s => (
-                <div key={s.title} className="p-4 rounded-xl bg-gray-50 border border-gray-100 hover:border-indigo-100 hover:bg-indigo-50/50 transition-all duration-200">
-                  <s.icon size={18} className="text-indigo-500 mb-2" />
-                  <div className="text-sm font-semibold text-gray-800 mb-1">{s.title}</div>
-                  <div className="text-xs text-gray-500 leading-relaxed">{s.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── CTA ─── */}
-      <section className="py-20 bg-indigo-600 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3" />
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/3" />
-        </div>
-        <div className="max-w-3xl mx-auto px-4 text-center relative">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Simplify Your Loan Calling Process?</h2>
-          <p className="text-indigo-200 mb-8 text-lg leading-relaxed">
-            Bring leads, calls, follow-ups, documents, and loan progress into one centralized workspace.
+      {/* ─── CTA FOOTER BANNER ─── */}
+      <section className="py-16 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+          <h2 className="text-3xl font-extrabold mb-4">
+            Ready to Deploy Shri Siddharoodha LoanConnect?
+          </h2>
+          <p className="text-indigo-100 text-sm mb-8 leading-relaxed">
+            Access your secure role-based dashboard for Admin, ASM, and Telecallers.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/login" className="inline-flex items-center gap-2 px-7 py-3.5 bg-white text-indigo-700 font-semibold rounded-xl hover:bg-indigo-50 shadow-md transition-all duration-200">
-              Get Started <ArrowRight size={18} />
-            </Link>
-            <Link to="/login" className="inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-700 text-white font-semibold rounded-xl hover:bg-indigo-800 transition-all duration-200">
-              Login
+          <div className="flex justify-center gap-4">
+            <Link to="/login" className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-indigo-700 font-extrabold rounded-xl hover:bg-indigo-50 shadow-lg transition-all">
+              Sign In To Portal
+              <ArrowRight size={18} />
             </Link>
           </div>
         </div>
       </section>
+
     </div>
   )
 }
