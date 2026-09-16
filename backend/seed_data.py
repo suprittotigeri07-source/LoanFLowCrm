@@ -32,13 +32,13 @@ def reset_and_seed():
     Lead.objects.all().delete()
     Customer.objects.all().delete()
 
-    # Delete all non-admin users
-    non_admin_deleted, _ = User.objects.filter(role__in=[User.Role.ASM, User.Role.TELECALLER]).delete()
-    print(f"Removed {non_admin_deleted} demo/non-admin users.")
+    # Delete all existing users (fresh start with single Super Admin)
+    deleted_users, _ = User.objects.all().delete()
+    print(f"Purged {deleted_users} existing user accounts.")
 
-    # 2. Seed initial Admin account
+    # 2. Seed single Super Admin account
     admin, created = User.objects.get_or_create(
-        email='admin@crm.local',
+        email='suprittotiger05@gmail.com',
         defaults={
             'employee_id': 'ADMIN-001',
             'name': 'Super Admin',
@@ -48,17 +48,18 @@ def reset_and_seed():
             'is_active': True,
         }
     )
-    if not admin.employee_id:
-        admin.employee_id = 'ADMIN-001'
+    admin.employee_id = 'ADMIN-001'
+    admin.email = 'suprittotiger05@gmail.com'
+    admin.name = 'Super Admin'
     admin.role = User.Role.ADMIN
     admin.is_staff = True
     admin.is_superuser = True
     admin.is_active = True
-    admin.set_password('Admin@12345')
+    admin.set_password('Suprit05#@')
     admin.save()
+    print(f"Single Super Admin Ready: {admin.email} (Emp ID: {admin.employee_id})")
 
-    print(f"Fresh Admin Ready: {admin.email} (Emp ID: {admin.employee_id})")
-    print("Fresh LoanFlow CRM Database Ready! All demo business data removed.")
+    print("LoanFlow CRM Database Initialized with Single Super Admin.")
 
 
 if __name__ == '__main__':

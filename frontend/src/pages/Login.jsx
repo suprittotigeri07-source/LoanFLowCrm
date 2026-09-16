@@ -5,12 +5,6 @@ import { authService } from '../services/authService'
 import { api } from '../api'
 import { TrendingUp, Eye, EyeOff, CheckCircle, ArrowRight, AlertCircle, Key, Lock } from 'lucide-react'
 
-const demoUsers = [
-  { role: 'Admin', employeeId: 'ADMIN-001', password: 'Admin@12345', color: 'bg-indigo-100 text-indigo-700 border-indigo-200' },
-  { role: 'ASM', employeeId: 'ASM-001', password: 'Asm@12345', color: 'bg-blue-100 text-blue-700 border-blue-200' },
-  { role: 'Telecaller', employeeId: 'TC-001', password: 'Caller@12345', color: 'bg-emerald-100 text-emerald-700 border-emerald-200' },
-]
-
 export default function Login() {
   const { login } = useAuth()
   const navigate = useNavigate()
@@ -64,8 +58,6 @@ export default function Login() {
       setLoading(false)
     }
   }
-
-  const fillDemo = (u) => { setEmployeeId(u.employeeId); setPassword(u.password); setError('') }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50/40 flex items-center justify-center p-4">
@@ -128,24 +120,7 @@ export default function Login() {
           {!mustChangePw ? (
             <>
               <h1 className="text-2xl font-bold text-gray-900 mb-1.5">Welcome Back</h1>
-              <p className="text-gray-500 text-xs mb-6">Sign in using your Employee ID and password</p>
-
-              {/* Demo quick-login */}
-              <div className="mb-6">
-                <p className="text-[11px] font-bold text-gray-400 uppercase tracking-wide mb-2">Quick Demo Login</p>
-                <div className="flex gap-2">
-                  {demoUsers.map(u => (
-                    <button
-                      key={u.role}
-                      type="button"
-                      onClick={() => fillDemo(u)}
-                      className={`flex-1 text-xs font-bold py-2 px-1 rounded-lg border cursor-pointer transition-all hover:scale-[1.02] ${u.color}`}
-                    >
-                      {u.role} ({u.employeeId})
-                    </button>
-                  ))}
-                </div>
-              </div>
+              <p className="text-gray-500 text-xs mb-6">Sign in using your Employee ID or Email and password</p>
 
               {error && (
                 <div className="mb-4 flex items-center gap-2.5 bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-xs text-red-700">

@@ -1,6 +1,7 @@
 // API client helper for Business Loan Telecalling CRM
 
-const API_BASE = '/api';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL ? import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '') : '';
+const API_BASE = `${BASE_URL}/api`;
 
 export const getAuthToken = () => localStorage.getItem('crm_access_token');
 export const setAuthTokens = (access, refresh, user) => {
