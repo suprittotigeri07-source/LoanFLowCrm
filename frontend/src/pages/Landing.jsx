@@ -10,8 +10,8 @@ import {
 // ─── Mock Dashboard Preview Card ─────────────────────────────────────────────
 function DashboardPreview() {
   return (
-    <div className="relative bg-white rounded-2xl shadow-2xl border border-indigo-100 overflow-hidden w-full max-w-lg mx-auto">
-      {/* Title bar */}
+    <div className="relative bg-white rounded-2xl shadow-xl border border-indigo-100 overflow-hidden w-full max-w-lg mx-auto">
+      {/* Header bar */}
       <div className="bg-gradient-to-r from-violet-700 to-indigo-700 px-4 py-3 flex items-center justify-between text-white">
         <div className="flex items-center gap-2">
           <div className="flex gap-1.5">
@@ -20,11 +20,11 @@ function DashboardPreview() {
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
           </div>
           <span className="text-xs text-indigo-100 ml-2 font-semibold tracking-wide">
-            Siddharoodha LoanConnect — Admin MIS
+            Siddharoodha LoanConnect — Manager MIS
           </span>
         </div>
         <span className="text-[10px] font-bold text-indigo-900 bg-white px-2.5 py-0.5 rounded-full shadow-sm">
-          Live Sync
+          Live Status
         </span>
       </div>
 
@@ -32,19 +32,19 @@ function DashboardPreview() {
         {/* Today MIS stats row */}
         <div className="grid grid-cols-4 gap-2">
           {[
-            { label: 'Total Leads', value: '250', color: 'bg-indigo-50 text-indigo-700 border-indigo-150' },
-            { label: 'Calls Today', value: '218', color: 'bg-blue-50 text-blue-700 border-blue-150' },
-            { label: 'Connected', value: '146', color: 'bg-purple-50 text-purple-700 border-purple-150' },
-            { label: 'Interested', value: '42', color: 'bg-violet-50 text-violet-700 border-violet-150' },
+            { label: 'Total Leads', value: '250', color: 'bg-indigo-50 text-indigo-700 border-indigo-100' },
+            { label: 'Calls Today', value: '218', color: 'bg-blue-50 text-blue-700 border-blue-100' },
+            { label: 'Connected', value: '146', color: 'bg-purple-50 text-purple-700 border-purple-100' },
+            { label: 'Interested', value: '42', color: 'bg-violet-50 text-violet-700 border-violet-100' },
           ].map(s => (
             <div key={s.label} className={`rounded-xl p-2.5 border ${s.color}`}>
-              <div className="text-base font-extrabold">{s.value}</div>
+              <div className="text-base font-bold">{s.value}</div>
               <div className="text-[10px] opacity-80 mt-0.5 font-medium leading-tight">{s.label}</div>
             </div>
           ))}
         </div>
 
-        {/* Funnel row */}
+        {/* Funnel summary row */}
         <div className="grid grid-cols-4 gap-2">
           {[
             { label: 'Docs Pending', value: '18', badge: 'bg-amber-100 text-amber-800' },
@@ -59,11 +59,11 @@ function DashboardPreview() {
           ))}
         </div>
 
-        {/* Telecaller performance table */}
+        {/* Telecaller activity */}
         <div>
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-bold text-slate-700">Telecaller Live Funnel</span>
-            <span className="text-[10px] text-indigo-600 font-medium">Target: 60 Calls/Day</span>
+            <span className="text-xs font-bold text-slate-700">Telecaller Workload & Progress</span>
+            <span className="text-[10px] text-indigo-600 font-medium">Daily Target: 60 Calls</span>
           </div>
           <div className="space-y-1.5">
             {[
@@ -80,25 +80,25 @@ function DashboardPreview() {
                 </div>
                 <div className="flex gap-3 text-[11px]">
                   <span className="text-slate-500">📞 {t.calls}</span>
-                  <span className="text-purple-700 font-bold">✨ {t.int}</span>
-                  <span className="text-indigo-700 font-bold">🏦 {t.login}</span>
+                  <span className="text-purple-700 font-bold">✨ {t.int} Int</span>
+                  <span className="text-indigo-700 font-bold">🏦 {t.login} Login</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Banker match preview */}
+        {/* Banker match notification */}
         <div className="bg-gradient-to-r from-violet-700 to-indigo-700 text-white rounded-xl p-3 shadow-sm">
           <div className="flex items-center justify-between mb-1.5">
             <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-100">
               <Landmark size={14} />
-              Banker Matching Engine
+              Banker Matching Recommendation
             </div>
-            <span className="text-[9px] bg-white text-indigo-900 font-bold px-2 py-0.5 rounded-full shadow-sm">High Fit</span>
+            <span className="text-[9px] bg-white text-indigo-900 font-bold px-2 py-0.5 rounded-full shadow-sm">High Eligibility</span>
           </div>
-          <p className="text-[11px] text-indigo-100">
-            Rajesh Kumar (Hardware · ₹1.2Cr Turnover) matched with <strong className="text-white">Banker A & NBFC B</strong>.
+          <p className="text-[11px] text-indigo-100 leading-snug">
+            Rajesh Kumar (Hardware · ₹1.20Cr Turnover) matched with <strong className="text-white">Banker A & NBFC B</strong>.
           </p>
         </div>
       </div>
@@ -119,20 +119,20 @@ function OneRecordPreview() {
           <p className="text-xs text-slate-500 mt-0.5">Sharma Traders · Hardware · Turnover: ₹1.20 Cr · Required: ₹25L</p>
         </div>
         <span className="text-xs font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">
-          Assigned to: Priya
+          Telecaller: Priya
         </span>
       </div>
 
       {/* Unified Timeline */}
       <div className="space-y-3">
-        <div className="text-xs font-bold text-indigo-900 uppercase tracking-wider">Unified 360° Activity Record</div>
+        <div className="text-xs font-bold text-indigo-900 uppercase tracking-wider">Single Unified Activity Record</div>
 
         {[
-          { icon: PhoneCall, color: 'text-blue-600 bg-blue-50 border-blue-100', title: 'First Telecall Initiated', time: '01-Sep 10:15 AM', detail: 'Duration: 3 min · Outcome: Interested · Req: ₹25L' },
-          { icon: MessageSquare, color: 'text-purple-600 bg-purple-50 border-purple-100', title: 'WhatsApp Business API Template Sent', time: '01-Sep 10:18 AM', detail: 'Sent Document List via Official Business API' },
-          { icon: Mic, color: 'text-violet-600 bg-violet-50 border-violet-100', title: '🎙️ Voice Remark Logged', time: '01-Sep 10:20 AM', detail: '"Customer has 5-yr vintage, GST available. Call back tomorrow 11 AM."' },
-          { icon: FileText, color: 'text-indigo-600 bg-indigo-50 border-indigo-100', title: 'KYC & GST Documents Uploaded', time: '02-Sep 02:30 PM', detail: 'ITR 2 yrs, GST Returns, Bank Statement 12 Months' },
-          { icon: Landmark, color: 'text-sky-600 bg-sky-50 border-sky-100', title: 'Banker Match Recommended', time: '02-Sep 04:00 PM', detail: 'Mapped to HDFC Bank (Login Stage)' },
+          { icon: PhoneCall, color: 'text-blue-600 bg-blue-50 border-blue-100', title: 'First Telecall Connected', time: '01-Sep 10:15 AM', detail: 'Duration: 3 min · Outcome: Interested · Requirement: ₹25 Lakhs' },
+          { icon: MessageSquare, color: 'text-purple-600 bg-purple-50 border-purple-100', title: 'WhatsApp Business API Template Sent', time: '01-Sep 10:18 AM', detail: 'Sent Document Checklist via Official WhatsApp Business API' },
+          { icon: Mic, color: 'text-violet-600 bg-violet-50 border-violet-100', title: '🎙️ Telecaller Voice Note', time: '01-Sep 10:20 AM', detail: '"5-year business vintage, GST & 2 years ITR available. Follow up tomorrow 11 AM."' },
+          { icon: FileText, color: 'text-indigo-600 bg-indigo-50 border-indigo-100', title: 'KYC & GST Documents Received', time: '02-Sep 02:30 PM', detail: 'ITR (2 yrs), GST 12M, Bank Statement 12M' },
+          { icon: Landmark, color: 'text-sky-600 bg-sky-50 border-sky-100', title: 'Lender Case Logged', time: '02-Sep 04:00 PM', detail: 'Submitted to HDFC Bank (Bank Login Stage)' },
         ].map((item, idx) => (
           <div key={idx} className="flex gap-3 text-xs">
             <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 border ${item.color}`}>
@@ -181,48 +181,48 @@ export default function Landing() {
             
             {/* Left Column */}
             <div>
-              <div className="inline-flex items-center gap-2 bg-indigo-100/70 border border-indigo-200/80 rounded-full px-4 py-1.5 mb-6 shadow-sm">
+              <div className="inline-flex items-center gap-2 bg-indigo-100/80 border border-indigo-200 rounded-full px-4 py-1.5 mb-6 shadow-sm">
                 <Sparkles size={14} className="text-violet-600" />
                 <span className="text-xs font-bold text-indigo-900 tracking-wide">
-                  SHRI SIDDHAROODHA BUSINESS LOAN CRM (LoanConnect)
+                  SHRI SIDDHAROODHA BUSINESS LOAN CRM (Siddharoodha LoanConnect)
                 </span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6 tracking-tight">
-                Purpose-Built For <br />
+                Business Loan Telecalling <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600">
-                  Business Loan Telecalling
+                  Built For Calling Teams
                 </span>
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-xl">
-                The complete Telecalling CRM + Auto Dialer + WhatsApp Automation + Banker Matching Engine designed specifically for loan DSAs, ASMs, and telecaller teams.
+                A simple, fast telecalling CRM with 1-click auto dialer, 2-second call logging, WhatsApp Business API templates, and automated banker matching.
               </p>
 
               <div className="flex flex-wrap gap-4 mb-10">
                 <Link to="/login" className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold rounded-xl hover:from-violet-700 hover:to-indigo-700 shadow-lg shadow-indigo-200 transition-all duration-200">
-                  Sign In to System
+                  Sign In to CRM Portal
                   <ArrowRight size={18} />
                 </Link>
                 <a href="#architecture" className="inline-flex items-center gap-2 px-6 py-3.5 bg-white text-indigo-700 font-bold rounded-xl border border-indigo-200 hover:bg-indigo-50/50 shadow-sm transition-all duration-200">
-                  Explore Specification
+                  View System Design
                   <ChevronRight size={18} />
                 </a>
               </div>
 
-              {/* Badges */}
+              {/* Highlights */}
               <div className="grid grid-cols-3 gap-3 border-t border-indigo-100 pt-6">
                 <div>
-                  <div className="text-xl font-bold text-indigo-900">1 Record</div>
-                  <div className="text-xs text-slate-500">Calls + WhatsApp + Docs</div>
+                  <div className="text-xl font-bold text-indigo-900">1 Customer</div>
+                  <div className="text-xs text-slate-500">1 Unified History Record</div>
                 </div>
                 <div>
                   <div className="text-xl font-bold text-violet-700">10 Outcomes</div>
-                  <div className="text-xs text-slate-500">2-Sec Call Logging</div>
+                  <div className="text-xs text-slate-500">2-Second Call Log</div>
                 </div>
                 <div>
-                  <div className="text-xl font-bold text-blue-700">Banker Match</div>
-                  <div className="text-xs text-slate-500">Automated Rules Engine</div>
+                  <div className="text-xl font-bold text-blue-700">Banker Engine</div>
+                  <div className="text-xs text-slate-500">Lender Rule Matching</div>
                 </div>
               </div>
             </div>
@@ -243,10 +243,10 @@ export default function Landing() {
               System Architecture
             </div>
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">
-              Designed For 3 Tier Operational Workflow
+              Designed For Your 3-Level Team Structure
             </h2>
             <p className="text-slate-500 max-w-2xl mx-auto text-sm leading-relaxed">
-              Every level of your loan organization has a dedicated workspace designed specifically for their daily tasks.
+              Super Admin, Area Sales Managers (ASMs), and Telecallers each get a clean, role-focused workspace.
             </p>
           </div>
 
@@ -258,15 +258,15 @@ export default function Landing() {
                 <BarChart2 size={24} />
               </div>
               <div className="text-xs font-bold text-indigo-700 uppercase tracking-wide mb-1">Level 1</div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Super Admin & ASM Dashboard</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Admin & ASM Dashboard</h3>
               <p className="text-slate-600 text-xs leading-relaxed mb-4">
-                Full organizational oversight across leads, telecallers, DSAs, lenders, locations, and revenue conversion metrics.
+                Full visibility across total leads, daily calls, connected leads, interested leads, documents pending, logins, approvals, and disbursements.
               </p>
               <ul className="space-y-2 text-xs text-slate-700">
                 <li className="flex items-center gap-2"><CheckCircle size={14} className="text-indigo-600" /> Total, Today's & Assigned Leads</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-indigo-600" /> Connected vs Interested Calls</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-indigo-600" /> Login, Approval & Disbursement MIS</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-indigo-600" /> Telecaller & Banker-wise Performance</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-indigo-600" /> Calls Made, Connected & Interested</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-indigo-600" /> Bank Login, Approval & Disbursement MIS</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-indigo-600" /> Telecaller & Banker-wise Reports</li>
               </ul>
             </div>
 
@@ -276,15 +276,15 @@ export default function Landing() {
                 <PhoneCall size={24} />
               </div>
               <div className="text-xs font-bold text-purple-700 uppercase tracking-wide mb-1">Level 2</div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Telecaller Workspace</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Telecaller App Workspace</h3>
               <p className="text-slate-600 text-xs leading-relaxed mb-4">
-                Fast, focused one-lead-at-a-time calling queue with business financials, auto-dialer, and 2-second outcome logging.
+                One lead on screen at a time with customer turnover, loan requirement, big 📞 CALL NOW button, and 10 outcome buttons for quick logging.
               </p>
               <ul className="space-y-2 text-xs text-slate-700">
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-purple-600" /> Customer Name, Turnover, Loan Req</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-purple-600" /> 1-Click Auto Call Dialing</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-purple-600" /> 10 Predefined Call Outcomes</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-purple-600" /> 🎙️ Voice Remarks & Quick Remarks</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-purple-600" /> Customer Name, Business, Turnover</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-purple-600" /> Big 📞 CALL NOW Auto-Dialer</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-purple-600" /> 10 Quick Call Outcome Buttons</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-purple-600" /> 🎙️ Voice Remark Recording</li>
               </ul>
             </div>
 
@@ -296,13 +296,13 @@ export default function Landing() {
               <div className="text-xs font-bold text-blue-700 uppercase tracking-wide mb-1">Level 3</div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">WhatsApp Business API</h3>
               <p className="text-slate-600 text-xs leading-relaxed mb-4">
-                Official WhatsApp Business API integration triggering verified document checklist templates instantly when marked Interested.
+                When telecaller selects INTERESTED, system automatically shows verified WhatsApp template with loan amount, quick processing notes, and document checklist.
               </p>
               <ul className="space-y-2 text-xs text-slate-700">
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-blue-600" /> Official Business API Integration</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-blue-600" /> Verified Pre-Approved Templates</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-blue-600" /> Automated Document Collection</li>
-                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-blue-600" /> Integrated Timeline & Reply Tracking</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-blue-600" /> Verified WhatsApp Business API setup</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-blue-600" /> Pre-Approved Business Templates</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-blue-600" /> Auto Document Checklist Request</li>
+                <li className="flex items-center gap-2"><CheckCircle size={14} className="text-blue-600" /> Customer Response Linked to History</li>
               </ul>
             </div>
 
@@ -316,21 +316,21 @@ export default function Landing() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block text-xs font-bold text-indigo-700 bg-indigo-100 border border-indigo-200 px-3.5 py-1 rounded-full uppercase tracking-wider mb-4">
-                Core Feature
+                Core Requirement
               </div>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4 leading-tight">
                 ONE CUSTOMER = ONE RECORD
               </h2>
               <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                No more switching between dialing apps, WhatsApp, spreadsheets, and emails. Everything related to a customer lives in a single, unified 360° record timeline.
+                Your telecallers don't need to check WhatsApp on phone and CRM on desktop separately. When you open a customer profile, you see full complete history in one place.
               </p>
               <ul className="space-y-3 text-xs text-slate-700">
                 {[
-                  'Complete call history with duration and disposition logs',
-                  'WhatsApp messages sent and customer responses attached',
-                  'Voice notes stored and transcribed to text',
-                  'Uploaded KYC, GST, and ITR documents in profile',
-                  'Banker matching recommendations & sanction status',
+                  'Call history with duration, call time, and disposition outcome',
+                  'WhatsApp messages sent & customer replies attached',
+                  '🎙️ Voice remarks stored and transcribed',
+                  'Uploaded documents (GST, ITR, Bank Statements)',
+                  'Follow-up schedule & assigned telecaller info',
                 ].map((feat, i) => (
                   <li key={i} className="flex items-center gap-3 bg-white p-3 rounded-xl border border-indigo-100 shadow-sm">
                     <CheckCircle size={16} className="text-violet-600 shrink-0" />
@@ -352,13 +352,13 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-block text-xs font-bold text-indigo-700 bg-indigo-50 px-3.5 py-1 rounded-full uppercase tracking-wider mb-3 border border-indigo-100">
-              Automated Intelligence
+              Smart Workflow
             </div>
             <h2 className="text-3xl font-extrabold text-slate-900 mb-4">
-              Banker Matching Engine & Business Loan Lead Schema
+              Banker Matching Engine & Business Loan Lead Form
             </h2>
             <p className="text-slate-500 max-w-xl mx-auto text-sm">
-              Instantly match business profiles to the right banking partners based on internal eligibility rules.
+              Instead of telecallers guessing where to send a lead, the system recommends lender options based on your internal rules.
             </p>
           </div>
 
@@ -372,14 +372,14 @@ export default function Landing() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold">Banker Matching Engine</h3>
-                  <p className="text-xs text-indigo-200">Configurable Lender Eligibility Criteria</p>
+                  <p className="text-xs text-indigo-200">Recommends Lenders Based On Internal Eligibility Rules</p>
                 </div>
               </div>
 
               <div className="space-y-3 text-xs mb-6">
                 <div className="bg-white/10 p-3 rounded-xl border border-white/15">
-                  <div className="font-bold text-indigo-100 mb-1">Input Criteria:</div>
-                  <div className="text-indigo-100">Loan: ₹30L · Turnover: ₹1.5Cr · Vintage: 5 Yrs · GST: Yes · ITR: Yes · Location: Hubli</div>
+                  <div className="font-bold text-indigo-100 mb-1">Lead Details Entered:</div>
+                  <div className="text-indigo-100">Loan Req: ₹30L · Turnover: ₹1.5Cr · Vintage: 5 Yrs · GST: Yes · ITR: Yes · Location: Hubli</div>
                 </div>
 
                 <div className="space-y-2">
@@ -403,14 +403,14 @@ export default function Landing() {
             <div className="bg-slate-50/70 rounded-2xl p-7 border border-indigo-100">
               <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                 <FileText size={20} className="text-violet-600" />
-                Business Loan Lead Form Schema
+                Business Loan Lead Form Fields
               </h3>
               <div className="grid grid-cols-2 gap-3 text-xs">
                 <div className="bg-white p-3 rounded-xl border border-indigo-100 shadow-sm">
                   <div className="font-bold text-violet-700 mb-1">Customer Details</div>
                   <ul className="space-y-1 text-slate-600 text-[11px]">
                     <li>• Customer Name & Mobile</li>
-                    <li>• Alternate Phone</li>
+                    <li>• Alternate Number</li>
                     <li>• City, Location, Pincode</li>
                   </ul>
                 </div>
@@ -418,8 +418,8 @@ export default function Landing() {
                   <div className="font-bold text-violet-700 mb-1">Business Details</div>
                   <ul className="space-y-1 text-slate-600 text-[11px]">
                     <li>• Business Name & Type</li>
-                    <li>• Vintage & Ownership</li>
-                    <li>• GST / ITR / Banking Available</li>
+                    <li>• Business Vintage</li>
+                    <li>• GST / ITR / Banking Status</li>
                   </ul>
                 </div>
                 <div className="bg-white p-3 rounded-xl border border-indigo-100 shadow-sm">
@@ -427,14 +427,14 @@ export default function Landing() {
                   <ul className="space-y-1 text-slate-600 text-[11px]">
                     <li>• Monthly & Annual Turnover</li>
                     <li>• Existing Loans & EMI</li>
-                    <li>• CIBIL Range & Loan Req.</li>
+                    <li>• CIBIL Range & Loan Amount</li>
                   </ul>
                 </div>
                 <div className="bg-white p-3 rounded-xl border border-indigo-100 shadow-sm">
-                  <div className="font-bold text-violet-700 mb-1">Loan Purpose & Source</div>
+                  <div className="font-bold text-violet-700 mb-1">Loan Requirement</div>
                   <ul className="space-y-1 text-slate-600 text-[11px]">
                     <li>• Working Capital / Expansion</li>
-                    <li>• Machinery / BT</li>
+                    <li>• Machinery / Balance Transfer</li>
                     <li>• Source: Telecaller, DSA, Digital</li>
                   </ul>
                 </div>
@@ -450,11 +450,11 @@ export default function Landing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
             <div className="inline-block text-xs font-bold text-violet-700 bg-violet-50 px-3.5 py-1 rounded-full uppercase tracking-wider mb-3 border border-violet-100">
-              Funnel Management
+              Loan Funnel
             </div>
-            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">9-Stage Business Loan Pipeline</h2>
+            <h2 className="text-3xl font-extrabold text-slate-900 mb-4">9-Stage Loan Pipeline</h2>
             <p className="text-slate-500 text-sm max-w-xl mx-auto">
-              Track lead stage progression with complete visibility from initial contact to bank disbursement.
+              Track every lead from initial phone call to bank sanction and final disbursement.
             </p>
           </div>
 
@@ -475,10 +475,10 @@ export default function Landing() {
       <section className="py-16 bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
           <h2 className="text-3xl font-extrabold mb-4">
-            Ready to Deploy Shri Siddharoodha LoanConnect?
+            Shri Siddharoodha LoanConnect Portal
           </h2>
           <p className="text-indigo-100 text-sm mb-8 leading-relaxed">
-            Access your secure role-based dashboard for Admin, ASM, and Telecallers.
+            Sign in using your assigned Employee ID or Email address.
           </p>
           <div className="flex justify-center gap-4">
             <Link to="/login" className="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-indigo-900 font-extrabold rounded-xl hover:bg-indigo-50 shadow-lg transition-all">
