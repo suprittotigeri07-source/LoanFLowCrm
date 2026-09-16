@@ -4,7 +4,19 @@ A comprehensive, production-ready **Business Loan Telecalling CRM** system desig
 
 ---
 
+## 🌐 Live Deployment Links & Credentials
+
+- **Frontend Application (Vercel)**: [https://loan-f-low-crm.vercel.app](https://loan-f-low-crm.vercel.app)
+- **Backend REST API (Render)**: [https://loanflowcrm.onrender.com](https://loanflowcrm.onrender.com)
+
+### 🔑 Super Admin Access Credentials
+- **Email / Username**: `suprittotiger05@gmail.com` *(or `ADMIN-001`)*
+- **Password**: `Suprit05#@`
+
+---
+
 ## 📑 Table of Contents
+- [Live Deployment Links](#-live-deployment-links--credentials)
 - [Features](#-features)
 - [System Architecture & Tech Stack](#-system-architecture--tech-stack)
 - [Data Models & Schema](#-data-models--schema)
