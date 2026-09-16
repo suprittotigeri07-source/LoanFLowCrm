@@ -60,26 +60,26 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-indigo-50/40 flex items-center justify-center p-4">
-      <div className="w-full max-w-5xl grid lg:grid-cols-2 gap-0 rounded-2xl shadow-2xl overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-white via-indigo-50/40 to-purple-50/40 flex items-center justify-center p-4">
+      <div className="w-full max-w-5xl grid lg:grid-cols-2 gap-0 rounded-2xl shadow-2xl overflow-hidden border border-indigo-100">
 
         {/* Left — Branding */}
-        <div className="bg-indigo-600 p-10 hidden lg:flex flex-col justify-between relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+        <div className="bg-gradient-to-br from-violet-700 via-indigo-700 to-blue-700 p-10 hidden lg:flex flex-col justify-between relative overflow-hidden text-white">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-xl" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-xl" />
 
           <div className="relative">
             <Link to="/" className="flex items-center gap-2.5 mb-12">
-              <div className="w-9 h-9 bg-white/20 rounded-xl flex items-center justify-center">
+              <div className="w-9 h-9 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
                 <TrendingUp size={20} className="text-white" />
               </div>
-              <span className="font-bold text-white text-lg">LoanFlow CRM</span>
+              <span className="font-extrabold text-white text-lg tracking-tight">LoanFlow CRM</span>
             </Link>
 
-            <h2 className="text-3xl font-bold text-white mb-4 leading-tight">
+            <h2 className="text-3xl font-extrabold text-white mb-4 leading-tight">
               Manage Leads.<br />Make Calls.<br />Close Loans.
             </h2>
-            <p className="text-indigo-200 mb-10 leading-relaxed text-sm">
+            <p className="text-indigo-100 mb-10 leading-relaxed text-sm">
               The complete Business Loan Telecalling CRM platform for Admin, ASM, and Telecallers.
             </p>
 
@@ -95,7 +95,7 @@ export default function Login() {
             </ul>
           </div>
 
-          <div className="relative flex items-center gap-3 bg-white/10 rounded-xl p-4">
+          <div className="relative flex items-center gap-3 bg-white/10 rounded-xl p-4 backdrop-blur-sm border border-white/10">
             <div className="flex -space-x-2">
               {['A', 'P', 'R'].map((l, i) => (
                 <div key={i} className="w-8 h-8 rounded-full bg-white/20 text-white text-xs font-bold flex items-center justify-center border-2 border-indigo-600">{l}</div>
@@ -111,19 +111,19 @@ export default function Login() {
         {/* Right — Login Form / Password Change */}
         <div className="bg-white p-8 lg:p-12 flex flex-col justify-center">
           <div className="lg:hidden flex items-center gap-2 mb-8">
-            <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-sm">
               <TrendingUp size={18} className="text-white" />
             </div>
-            <span className="font-bold text-gray-900">LoanFlow CRM</span>
+            <span className="font-bold text-slate-900">LoanFlow CRM</span>
           </div>
 
           {!mustChangePw ? (
             <>
-              <h1 className="text-2xl font-bold text-gray-900 mb-1.5">Welcome Back</h1>
-              <p className="text-gray-500 text-xs mb-6">Sign in using your Employee ID or Email and password</p>
+              <h1 className="text-2xl font-extrabold text-slate-900 mb-1.5">Welcome Back</h1>
+              <p className="text-slate-500 text-xs mb-6">Sign in using your Employee ID or Email and password</p>
 
               {error && (
-                <div className="mb-4 flex items-center gap-2.5 bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-xs text-red-700">
+                <div className="mb-4 flex items-center gap-2.5 bg-rose-50 border border-rose-200 rounded-xl px-4 py-3 text-xs text-rose-700">
                   <AlertCircle size={16} className="shrink-0" />
                   {error}
                 </div>
@@ -131,19 +131,19 @@ export default function Login() {
 
               <form onSubmit={handleLogin} className="space-y-4 text-xs">
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1">Employee ID *</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Employee ID or Email *</label>
                   <input
                     type="text"
                     value={employeeId}
                     onChange={e => setEmployeeId(e.target.value)}
-                    placeholder="e.g. TC-001, ADMIN-001"
+                    placeholder="e.g. suprittotiger05@gmail.com, ADMIN-001"
                     required
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition-all"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1">Password *</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Password *</label>
                   <div className="relative">
                     <input
                       type={showPw ? 'text' : 'password'}
@@ -151,9 +151,9 @@ export default function Login() {
                       onChange={e => setPassword(e.target.value)}
                       placeholder="••••••••"
                       required
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500 pr-11"
+                      className="w-full border border-slate-200 rounded-xl px-4 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition-all pr-11"
                     />
-                    <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                    <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
                       {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
                     </button>
                   </div>
@@ -161,16 +161,16 @@ export default function Login() {
 
                 <div className="flex items-center justify-between">
                   <label className="flex items-center gap-2 cursor-pointer select-none">
-                    <input type="checkbox" checked={remember} onChange={e => setRemember(e.target.checked)} className="w-4 h-4 accent-indigo-600 rounded" />
-                    <span className="text-xs text-gray-600 font-medium">Remember Employee ID</span>
+                    <input type="checkbox" checked={remember} onChange={e => setRemember(e.target.checked)} className="w-4 h-4 accent-violet-600 rounded" />
+                    <span className="text-xs text-slate-600 font-medium">Remember Employee ID</span>
                   </label>
-                  <a href="#" className="text-xs text-indigo-600 hover:underline font-bold">Forgot Password?</a>
+                  <a href="#" className="text-xs text-violet-600 hover:underline font-bold">Forgot Password?</a>
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full flex items-center justify-center gap-2 py-3 bg-indigo-600 text-white font-bold text-xs rounded-xl hover:bg-indigo-700 transition-all shadow-md disabled:opacity-60"
+                  className="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold text-xs rounded-xl hover:from-violet-700 hover:to-indigo-700 transition-all shadow-md shadow-indigo-200 disabled:opacity-60"
                 >
                   {loading ? 'Authenticating...' : <>Sign In <ArrowRight size={16} /></>}
                 </button>
