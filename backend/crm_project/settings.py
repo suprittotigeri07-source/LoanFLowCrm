@@ -169,3 +169,6 @@ EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', 'True').lower() in ('true', '1',
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 
+FRONTEND_LOGIN_URL = os.environ.get('FRONTEND_LOGIN_URL', 'https://loan-f-low-crm.vercel.app/login')
+
+
